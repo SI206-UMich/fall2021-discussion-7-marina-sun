@@ -25,7 +25,7 @@ def find_word(string_list):
     # initialize an empty list
     word_list = []
     # define the regular expression
-    expression = r'\b([a-zA-Z]+)\d(3)([A-Za-z])+' 
+    expression = r'\b([a-zA-Z]+)\d{3}([a-zA-Z]+)' 
     # loop through each line of the string list 
     for line in string_list:
 
@@ -33,7 +33,11 @@ def find_word(string_list):
         match = re.findall(expression, line)
     # loop through the found words and add the words to your empty list 
         for word in match:
-            word_list.append(word)
+            str = ""
+            for x in word:
+                str += x
+            #print(word)
+            word_list.append(str)
     #return the list of all words that start with the letter B, E, or T
     return word_list
 
@@ -44,7 +48,8 @@ def find_days(string_list):
     # initialize an empty list
     days_list = []
     # define the regular expression
-    expression = r'\b\d(1,2)[\/](\d(1,2))[\/](\d{4})'
+    #expression = r'\b\d(1,2)[\/](\d(1,2))[\/](\d{4})'
+    expression = r'^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$'
     # loop through each line of the string list
     for x in string_list:
     # find all the dates that match the regular expression in each line
